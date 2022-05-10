@@ -12,7 +12,7 @@ spec: #Disctionary
   selector:
     matchLabels:
       app: myapp 
-    template: 
+  template: 
       metadata:
         name: myapp-pod 
         labels: 
