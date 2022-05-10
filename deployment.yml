@@ -1,3 +1,6 @@
+#any manifest file you want to apply to k8s 
+#kubectl apply -f nameoftheyaml file
+#kubectl delete -f nameoftheyaml file
 ###this is the base defination for k8s
 #any k8s manifest start with apiversion
 apiVersion: apps/v1
@@ -8,18 +11,23 @@ metadata:
   name: myapp-deployment
 ##specificatioin we are going to deploy provide the api. 
 spec: #Disctionary
-  replicas: 3
+  replicas: 3 #deployment will ensure that all the time three pod are running. 
   selector:
-    matchLabels:
-      app: myapp 
-  template: 
-      metadata:
+    matchLabels: #matchLabel is similar to matchexpression
+      app: myapp #i am provising key app value is myapp
+      #gopal: das
+#inside the pod i want to run a container
+  template: #to do the same we create a template
+      metadata: #tempalte has metadata inside the meta data i put the label which i define in pod spec
         name: myapp-pod 
         labels: 
-          app: myapp 
+          app: myapp #same label i need to put inside my template
       spec:
         containers: #list
           - name: myapp-container 
-            image: stacksimplify/kubenginx:3.0.0
+            image: stacksimplify/kubenginx:3.0.0 #this image need to be applied to all the three pod
             ports:
               - containerPort: 80
+#.spec.replicas
+#.spec.selector
+#.spec.template
