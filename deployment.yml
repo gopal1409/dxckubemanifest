@@ -1,0 +1,25 @@
+###this is the base defination for k8s
+#any k8s manifest start with apiversion
+apiVersion: apps/v1
+#which api i am going to use pod deployment replicaset pv pvc
+kind: Deployment
+#the api name is common but using the api we are going to deploy 
+metadata:
+  name: myapp-deployment
+##specificatioin we are going to deploy provide the api. 
+spec: #Disctionary
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp 
+    templates: 
+      metadata:
+        name: myapp-pod 
+        labels: 
+          app: myapp 
+      spec:
+        containers: #list
+          - name: myapp-container 
+            image: stacksimplify/kubenginx:3.0.0
+            ports:
+              - containerPort: 80
