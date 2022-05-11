@@ -16,7 +16,7 @@ spec:
     spec:
       containers: 
       - name: usermgmt-webapp 
-        image: stacksimplify/kube-usermgmt-webapp:1.0.0-MYSQLDB
+        image: stacksimplify/kube-usermgmt-webapp:1.0.0-MySQLDB
         ports:
           - containerPort: 8080 
         env: 
