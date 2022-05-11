@@ -8,6 +8,6 @@ spec:
     
     requests:
       storage: 10Gi 
-    #volumeMode: Filesystem 
-    accessModes:
+  volumeMode: Filesystem 
+  accessModes:
       - "ReadWriteOnce"
