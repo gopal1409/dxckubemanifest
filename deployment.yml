@@ -25,7 +25,7 @@ spec: #Disctionary
       spec:
         containers: #list
           - name: myapp-container 
-            image: stacksimplify/kubenginx:3.0.0 #this image need to be applied to all the three pod
+            image: piuma/phpsysinfo #this image need to be applied to all the three pod
             ports:
               - containerPort: 80
 #.spec.replicas
