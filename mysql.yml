@@ -28,8 +28,13 @@ spec:
         volumeMounts: #this is inside your container
           - name: mysql-persistent-storage 
             mountPath: /var/lib/mysql
+          - name: usermgmt-config
+            mountPath: /docker-entrypoint-initdb.d
       volumes: #we are mapping the pvc with my container
         - name: mysql-persistent-storage 
           persistentVolumeClaim:
             claimName: task-pv-claim
+        - name: usermgmt-config 
+          configMap:
+            name: usermanagement-db-creation-script
 
