@@ -4,10 +4,9 @@ metadata:
   name: usermgmt-webapp
 spec:
    #loadbalancer clusterip
-   type: LoadBalancer
+  type: NodePort
   selector:
     app: usermgmt-webapp
-
   ports: 
     - port: 80
       targetPort: 8080
