@@ -9,4 +9,4 @@ spec:
   ports: 
     - name: mysql  
       port: 3306
-  clusterIP: None
+  clusterIP: None #internally kubernetes will ensure that the pod is accessable using pod ip
