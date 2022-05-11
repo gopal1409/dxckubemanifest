@@ -1,0 +1,35 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql 
+  labels:
+    app: mysql 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers: 
+      - name: mysql 
+        image: mysql:5.6 
+        env: #password for your database
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-db-password
+                key: db-password
+        ports:
+        - containerPort: 3306 #internal container port
+        volumeMounts: #this is inside your container
+          - name: mysql-persistent-storage 
+            mountPath: /var/lib/mysql
+      volumes: #we are mapping the pvc with my container
+        - name: mysql-persistent-storage 
+          persistentVolumeClaim:
+            claimName: task-pv-claim
+
